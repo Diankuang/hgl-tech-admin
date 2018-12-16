@@ -63,7 +63,7 @@ export default {
               // this.$store.commit('$_setStorage', JSON.stringify(data.user))
               // this.$store.commit('$_setLogin', '1')
               // this.$store.commit('$_setUserId', data.user.userId)
-              this.$router.push('/my-account')
+              this.$router.push('/home')
             } else {
               alert(data.msg)
             }
@@ -93,9 +93,9 @@ export default {
   margin:0px;
 }
 .el-row-login{
-  margin: auto;  
-  position: absolute;  
-  top: 0; left: 0; bottom: 0; right: 0; 
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 .el-row-login-content{
   display: block;
@@ -114,9 +114,9 @@ export default {
   color: #777;
   width: 382px;
   height: 305px;
-  margin: auto;  
-  position: absolute;  
-  top: 0; left: 0; bottom: 0; right: 0; 
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 .login-form-item{
     margin-top: 20px;

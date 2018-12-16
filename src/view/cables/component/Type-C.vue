@@ -12,19 +12,23 @@
       </el-select>
     </el-row> -->
     <el-row class="micro-usb-row">
-      <el-col :span="6" :xs="24" v-for="item in productList" :key="item.id"  class="micro-usb-row-col">
+      <el-col :span="4" :xs="24" v-for="item in productList" :key="item.id"  class="micro-usb-row-col">
         <el-card :body-style="{ padding: '0px' }" class="micro-usb-row-col-card" shadow="hover">
           <el-col :span="24" :xs="24" style="width:100%;height: 250px;">
-            <router-link :to="{path: '/power-bank/'+item.id}">
+            <router-link :to="{path: '/edit-product/edit-cables/'+item.id}">
               <img :src="img+item.picture" class="image">
             </router-link>
           </el-col>
           <el-col :span="24" :xs="24" class="cables-div">
             <h4>${{item.price}}</h4>
-            <el-button icon="el-icon-star-on" circle style="padding:5px;" @click="addWishList(item)"></el-button>
-            <router-link :to="{path: '/power-bank/'+item.id}">
+            <!-- <el-button icon="el-icon-delete" circle style="padding:5px;" @click="deleteProduct(item)"></el-button> -->
+            <router-link :to="{path: '/edit-product/edit-cables/'+item.id}">
               {{item.name}}
             </router-link>
+            <el-col>
+              <el-button icon="el-icon-delete" circle style="padding:5px;" @click="deleteProduct(item)"></el-button>
+              <span class="add-wish-list-span" @click="deleteProduct(item)">remove this product</span>
+            </el-col>
           </el-col>
         </el-card>
       </el-col>
@@ -58,7 +62,7 @@ export default {
       total: 0,
       img: 'http://www.gugualao.top/img/',
       productList: [],
-      type: '1'
+      type: '7'
     }
   },
   methods: {
@@ -86,7 +90,7 @@ export default {
         }
       })
     },
-    addWishList (item) {
+    deleteProduct (item) {
       let that = this
       if (that.userInfo === null) {
         this.$router.push('/login')
@@ -95,11 +99,14 @@ export default {
       let params = {
         userId: that.userInfo.userId,
         productId: item.id,
-        flag: 0
+        type: 'cables'
       }
-      api.post('/user/add-wish-list', params).then(data => {
+      api.post('/product/delete-product', params).then(data => {
         if (data.code === '0') {
-          this.$router.push('/my-account/my-wish-list')
+          alert('Remove Success')
+          this.$router.go(0)
+        } else {
+          alert(data.msg)
         }
       })
     }
@@ -155,5 +162,13 @@ export default {
 }
 .cables-div{
   margin: 50px 0 10px 0;
+}
+.add-wish-list-span{
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;
+}
+a {
+    color: #777;
 }
 </style>

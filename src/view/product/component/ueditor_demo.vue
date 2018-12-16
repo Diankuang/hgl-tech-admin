@@ -24,7 +24,7 @@
         </el-col>
       </el-col>
       <el-col :span="24" :xs="24">
-        <UEditor :config="config" ref="ueditor"></UEditor>
+        <ueditor :config="config" ref="ueditor"></ueditor>
         <el-button type="primary" class="add-news-button" @click="getUEContent()">Submit</el-button>
       </el-col>
     </el-row>
@@ -32,11 +32,11 @@
 </template>
 
 <script>
-import UEditor from '@/components/ue/ueditor.vue'
+import ueditor from '@/components/ue/ueditor.vue'
 import api from '@/utils/api'
 export default {
   name: 'hello',
-  components: { UEditor },
+  components: { ueditor },
   data () {
     return {
       config: {
@@ -52,8 +52,8 @@ export default {
         autoClearinitialContent: true, // 是否自动清除编辑器初始内容，注意：如果focus属性设置为true,这个也为真，那么编辑器一上来就会触发导致初始化的内容看不到了
         initialFrameWidth: null,
         initialFrameHeight: 450,
-        BaseUrl: '',
-        UEDITOR_HOME_URL: 'static/UE/'
+        BaseUrl: ''
+        // UEDITOR_HOME_URL: '/static/UE/'
       },
       addFormVisible: false,
       dialogVisible: false,
@@ -91,7 +91,6 @@ export default {
       }
     },
     getUEContent () {
-      debugger
       let that = this
       let content = this.$refs.ueditor.getUEContent() // 调用子组件方法
       // this.$notify({
@@ -131,8 +130,8 @@ export default {
 }
 </script>
 <style scoped>
-/* .el-upload-news{
-  height: 100px;
+/* .ueditor-demo{
+  margin: 30px 0 0 0;
 } */
 .el-upload--picture-card, .el-upload-dragger{
    width: 60px;
@@ -148,5 +147,8 @@ export default {
     height: 60px;
     line-height: 146px;
     vertical-align: top;
-  }
+}
+.add-micro-usb-upload{
+  text-align: left;
+}
 </style>

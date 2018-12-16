@@ -1,7 +1,8 @@
 <template>
     <div id="add-temper">
         <el-row class="add-temper-row">
-            <el-col class="add-temper-upload">
+          <el-col :span="24" :xs="24">
+            <el-col class="add-temper-upload" :span="12" :xs="24">
                 <strong>上传图片</strong>
                 <el-upload
                     :action="uploadPath+'/file/upload'"
@@ -16,56 +17,57 @@
                     <img width="100%" :src="dialogImageUrl" alt="">
                 </el-dialog>
             </el-col>
-            <el-col class="add-temper-form">
-                <el-form :model="temperForm"  ref="temperForm" label-width="100px" class="demo-temperForm">
-                    <!-- <el-col :span="12" :xs="24"> -->
-                    <el-form-item label="name" prop="name">
-                    <el-input v-model="temperForm.name"></el-input>
-                    </el-form-item>
-                    <el-form-item label="price" prop="price" type="number" step="0.01">
-                        <el-input v-model="temperForm.price"></el-input>
-                    </el-form-item>
-                    <el-form-item label="adapter" prop="adapter">
-                        <el-input v-model="temperForm.adapter"></el-input>
-                    </el-form-item>
-                    <el-form-item label="type" prop="type">
-                        <el-select v-model="temperForm.type" placeholder="Select Type">
-                        <el-option label="iphone" value="1"></el-option>
-                        <el-option label="HuaWei" value="2"></el-option>
-                        <el-option label="Samsung" value="3"></el-option>
-                        <el-option label="Oppo" value="4"></el-option>
-                        <el-option label="Vivo" value="5"></el-option>
-                        <el-option label="Others" value="6"></el-option>
-                        </el-select>
-                    </el-form-item>
-                    <el-form-item label="introductions" prop="introductions">
-                        <el-input type="textarea" :rows="2" v-model="temperForm.introductions"></el-input>
-                    </el-form-item>
-                     <!-- <el-form-item>
-                        <el-button type="primary" @click="submitForm('temperForm')">Submit</el-button>
-                        <el-button @click="resetForm('temperForm')">Reset</el-button>
-                    </el-form-item> -->
-                </el-form>
+            <el-col class="add-temper-upload" :span="12" :xs="24">
+              <strong>产品详情图片上传</strong>
+              <el-upload
+                  :action="uploadPath+'/file/upload'"
+                  list-type="picture-card"
+                  :on-preview="handlePictureCardPreview"
+                  :on-remove="handleRemove"
+                  accept="img"
+                  :on-success="uploadDetail">
+                  <i class="el-icon-plus"></i>
+              </el-upload>
+              <el-dialog :visible.sync="dialogVisible">
+                  <img width="100%" :src="dialogImageUrl" alt="">
+              </el-dialog>
             </el-col>
-            <el-col class="add-temper-upload">
-                <strong>产品详情图片上传</strong>
-                <el-upload
-                    :action="uploadPath+'/file/upload'"
-                    list-type="picture-card"
-                    :on-preview="handlePictureCardPreview"
-                    :on-remove="handleRemove"
-                    accept="img"
-                    :on-success="uploadDetail">
-                    <i class="el-icon-plus"></i>
-                </el-upload>
-                <el-dialog :visible.sync="dialogVisible">
-                    <img width="100%" :src="dialogImageUrl" alt="">
-                </el-dialog>
-            </el-col>
-              <el-col>
-              <el-button type="primary" @click="submitForm('temperForm')">Submit</el-button>
-              <el-button @click="resetForm('temperForm')">Reset</el-button>
-            </el-col>
+          </el-col>
+          <el-col class="add-temper-form">
+              <el-form :model="temperForm"  ref="temperForm" label-width="100px" class="demo-temperForm">
+                  <!-- <el-col :span="12" :xs="24"> -->
+                  <el-form-item label="name" prop="name">
+                  <el-input v-model="temperForm.name"></el-input>
+                  </el-form-item>
+                  <el-form-item label="price" prop="price" type="number" step="0.01">
+                      <el-input v-model="temperForm.price"></el-input>
+                  </el-form-item>
+                  <el-form-item label="adapter" prop="adapter">
+                      <el-input v-model="temperForm.adapter"></el-input>
+                  </el-form-item>
+                  <el-form-item label="type" prop="type">
+                      <el-select v-model="temperForm.type" placeholder="Select Type">
+                      <el-option label="iphone" value="1"></el-option>
+                      <el-option label="HuaWei" value="2"></el-option>
+                      <el-option label="Samsung" value="3"></el-option>
+                      <el-option label="Oppo" value="4"></el-option>
+                      <el-option label="Vivo" value="5"></el-option>
+                      <el-option label="Others" value="6"></el-option>
+                      </el-select>
+                  </el-form-item>
+                  <el-form-item label="introductions" prop="introductions">
+                      <el-input type="textarea" :rows="2" v-model="temperForm.introductions"></el-input>
+                  </el-form-item>
+                    <!-- <el-form-item>
+                      <el-button type="primary" @click="submitForm('temperForm')">Submit</el-button>
+                      <el-button @click="resetForm('temperForm')">Reset</el-button>
+                  </el-form-item> -->
+              </el-form>
+          </el-col>
+          <el-col>
+            <el-button type="primary" @click="submitForm('temperForm')">Submit</el-button>
+            <el-button @click="resetForm('temperForm')">Reset</el-button>
+          </el-col>
         </el-row>
     </div>
 </template>
@@ -83,8 +85,8 @@ export default {
         /**
          * 手机膜类别，1 temper,2 Huawei,3 Samsung,4 oppo,5 vivo,6 others
          */
-        type: 1,
-        price: 0,
+        type: '',
+        price: '',
         introductions: '',
         picture: [],
         detail: []
@@ -188,5 +190,11 @@ export default {
 </script>
 
 <style>
-
+#add-temper{
+  width: 100%;
+  min-height: 100%;
+}
+.add-temper-upload{
+  text-align: left;
+}
 </style>

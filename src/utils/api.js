@@ -3,8 +3,9 @@
 import axios from 'axios'
 import qs from 'qs'
 
-axios.defaults.baseURL = 'http://localhost:9002'
+// axios.defaults.baseURL = 'http://localhost:8086'
 // axios.defaults.baseURL = 'http://www.gugualao.top/'
+axios.defaults.baseURL = 'http://hgl-tech-admin.gugualao.top/'
 axios.defaults.withCredentials = true
 
 axios.interceptors.request.use(config => {
@@ -49,7 +50,6 @@ export default {
   post (url, data) {
     return axios({
       method: 'post',
-      // baseURL: 'http://localhost:9002/',
       url,
       data: data,
       timeout: 10000,

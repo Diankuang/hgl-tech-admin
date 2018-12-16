@@ -1,18 +1,18 @@
 <template>
   <div class="iPhone">
     <el-row class="iPhone-row">
-      <el-col :span="6" :xs="24" v-for="item in temperList" :key="item.id"  class="iPhone-row-col">
+      <el-col :span="4" :xs="24" v-for="item in temperList" :key="item.id"  class="iPhone-row-col">
         <el-card :body-style="{ padding: '0px' }" class="iPhone-row-col-card" shadow="hover">
-           <router-link :to="{path: '/temper-pro/'+item.id}">
+           <router-link :to="{path: '/edit-product/edit-temper/'+item.id}">
             <img :src="img+item.picture" class="image">
           </router-link>
           <h4>${{item.price}}</h4>
-          <router-link :to="{path: '/temper-pro/'+item.id}" class="temper-router-link">
+          <router-link :to="{path: '/edit-product/edit-temper/'+item.id}" class="temper-router-link">
             <p class="iPhone-row-col-p">{{item.name}}</p>
           </router-link>
           <el-col>
-            <el-button icon="el-icon-star-on" circle style="padding:5px;" @click="addWishList(item)"></el-button>
-            <span class="add-wish-list-span" @click="addWishList(item)">add to my wish list</span>
+            <el-button icon="el-icon-delete" circle style="padding:5px;" @click="deleteProduct(item)"></el-button>
+            <span class="add-wish-list-span" @click="deleteProduct(item)">remove this product</span>
           </el-col>
         </el-card>
       </el-col>
@@ -70,7 +70,7 @@ export default {
         }
       })
     },
-    addWishList (item) {
+    deleteProduct (item) {
       let that = this
       if (that.userInfo === null) {
         this.$router.push('/login')
@@ -79,11 +79,13 @@ export default {
       let params = {
         userId: that.userInfo.userId,
         productId: item.id,
-        flag: 1
+        type: 'temper'
       }
-      api.post('/user/add-wish-list', params).then(data => {
+      api.post('/product/delete-product', params).then(data => {
         if (data.code === '0') {
-          this.$router.push('/my-account/my-wish-list')
+          this.$router.go(0)
+        } else {
+          alert(data.msg)
         }
       })
     }
@@ -132,13 +134,16 @@ export default {
   background-color:#000;
   color:#fff;
 }
-/* .iPhone-row-col-card{
+.iPhone-row-col-card{
   height: 400px;
-} */
+}
 .temper-router-link :hover {text-decoration:underline;}
 .add-wish-list-span{
   font-size: 12px;
   color: #999;
   cursor: pointer;
+}
+a {
+    color: #777;
 }
 </style>
