@@ -96,7 +96,7 @@ export default {
       product: {},
       productPicture: [],
       productDetail: [],
-      img: 'http://www.gugualao.top/img/',
+      img: 'http://www.gugualao.top/files/',
       activeName: 'Detail',
       techSupport: require('@/assets/images/Tech-Support.jpg'),
       bottomSwiper: '',

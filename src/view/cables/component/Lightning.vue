@@ -49,7 +49,7 @@ export default {
       pageNum: 1,
       total: 0,
       pageSize: 10,
-      img: 'http://www.gugualao.top/img/',
+      img: 'http://www.gugualao.top/files/',
       productList: []
     }
   },

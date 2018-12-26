@@ -60,7 +60,7 @@ export default {
       ue1: 'ue1', // 不同编辑器必须不同的id
       ue2: 'ue2',
       title: '',
-      uploadPath: 'http://www.gugualao.top',
+      uploadPath: 'http://hgl-tech-admin.gugualao.top',
       content: '',
       picture: '',
       summarize: '',

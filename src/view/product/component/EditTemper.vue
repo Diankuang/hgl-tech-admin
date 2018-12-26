@@ -1,8 +1,8 @@
 <template>
-    <div id="add-temper">
-        <el-row class="add-temper-row">
+    <div id="edit-temper">
+        <el-row class="edit-temper-row">
           <el-col :span="24" :xs="24">
-            <el-col class="add-temper-upload" :span="12" :xs="24">
+            <el-col class="edit-temper-upload" :span="12" :xs="24">
                 <strong>上传图片</strong>
                 <el-upload
                     :action="uploadPath+'/file/upload'"
@@ -17,33 +17,23 @@
                     <img width="100%" :src="dialogImageUrl" alt="">
                 </el-dialog>
             </el-col>
-            <el-col class="add-temper-upload" :span="12" :xs="24">
+            <el-col class="edit-temper-upload" :span="12" :xs="24">
               <strong>产品详情图片上传</strong>
               <el-upload
                   :action="uploadPath+'/file/upload'"
                   list-type="picture-card"
                   :on-preview="handlePictureCardPreview"
-                  accept="img"
                   :on-remove="handleRemove"
+                  accept="img"
                   :on-success="uploadDetail">
                   <i class="el-icon-plus"></i>
               </el-upload>
               <el-dialog :visible.sync="dialogVisible">
                   <img width="100%" :src="dialogImageUrl" alt="">
               </el-dialog>
-              <el-upload
-                class="upload-demo"
-                :action="uploadPath+'/file/upload'"
-                :on-success="uploadDetail"
-                :on-remove="handleRemove"
-                multiple
-                :file-list="fileList">
-                <el-button size="small" type="primary">pdf上传</el-button>
-                <div slot="tip" class="el-upload__tip">可以上传pdf文件</div>
-              </el-upload>
             </el-col>
           </el-col>
-          <el-col class="add-temper-form">
+          <el-col class="edit-temper-form">
               <el-form :model="temperForm"  ref="temperForm" label-width="100px" class="demo-temperForm">
                   <!-- <el-col :span="12" :xs="24"> -->
                   <el-form-item label="name" prop="name">
@@ -86,10 +76,11 @@
 import api from '@/utils/api'
 
 export default {
-  name: 'AddTemper',
+  name: 'EditTemper',
   data () {
     return {
       temperForm: {
+        id: '',
         name: '',
         adapter: '',
         /**
@@ -130,8 +121,7 @@ export default {
       // uploadPath: 'http://47.107.57.42:9002/',
       uploadPath: 'http://hgl-tech-admin.gugualao.top',
       orderNo: 0,
-      detailOrderNo: 0,
-      fileList: []
+      detailOrderNo: 0
     }
   },
   methods: {
@@ -140,7 +130,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           let params = that.temperForm
-          api.post('/temper/add-temper', params).then(data => {
+          api.post('/temper/edit-temper', params).then(data => {
             if (data.code === '0') {
               alert(data.msg)
               this.$router.go(0)
@@ -184,8 +174,26 @@ export default {
         that.temperForm.detail.push(picture)
       }
     },
-    handleChange (file, fileList) {
-      this.fileList = fileList.slice(-3)
+    getProductDetail () {
+      let that = this
+      let param = {
+        temperId: this.$route.params.productId
+      }
+      api.postC('/temper/query-Temper-detail', param).then(data => {
+        if (data.code === '0') {
+          that.temperForm = data.tTemper
+          that.temperPic = data.tTemperPic
+          let params = {
+            productId: this.$route.params.productId
+          }
+          api.postC('/product/get-product-detail', params).then(detail => {
+            if (detail.code === '0') {
+              that.productDetail = detail.list
+              console.log(that.productDetail)
+            }
+          })
+        }
+      })
     }
   },
   computed: {
@@ -199,16 +207,17 @@ export default {
     } else if (this.userInfo.email !== '1832054053@qq.com') {
       this.$router.push('/')
     }
+    this.getProductDetail()
   }
 }
 </script>
 
 <style>
-#add-temper{
+#edit-temper{
   width: 100%;
   min-height: 100%;
 }
-.add-temper-upload{
+.edit-temper-upload{
   text-align: left;
 }
 </style>

@@ -60,7 +60,7 @@ export default {
       pageNum: 1,
       pageSize: 10,
       total: 0,
-      img: 'http://www.gugualao.top/img/',
+      img: 'http://www.gugualao.top/files/',
       productList: [],
       type: '7'
     }

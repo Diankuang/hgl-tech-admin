@@ -46,7 +46,7 @@ export default {
       pageSize: 10,
       total: 0,
       temperList: [],
-      img: 'http://www.gugualao.top/img/'
+      img: 'http://www.gugualao.top/files/'
     }
   },
   methods: {

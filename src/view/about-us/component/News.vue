@@ -36,7 +36,7 @@ export default {
     return {
       newsList: [],
       logo: require('@/assets/images/5bbeafcb2798f.jpg'),
-      img: 'http://www.gugualao.top/img/'
+      img: 'http://www.gugualao.top/files/'
     }
   },
   methods: {
