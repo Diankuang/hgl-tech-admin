@@ -1,16 +1,5 @@
 <template>
   <div class="micro-usb">
-    <el-row class="micro-usb-row-select">
-      MicroUsb Type
-      <el-select v-model="type" placeholder="Select Type" class="usb-el-select" @change="getMicroUsbList()">
-        <el-option label="Wireles schargers" value="1"></el-option>
-        <el-option label="Car Chargers" value="2"></el-option>
-        <el-option label="Single USB Chargers" value="3"></el-option>
-        <el-option label="Wall Chargers" value="4"></el-option>
-        <el-option label="Multi-function" value="5"></el-option>
-        <el-option label="Power Socket" value="6"></el-option>
-      </el-select>
-    </el-row>
     <el-row class="micro-usb-row">
       <el-col :span="4" :xs="24" v-for="item in productList" :key="item.id"  class="micro-usb-row-col">
         <el-card :body-style="{ padding: '0px' }" class="micro-usb-row-col-card" shadow="hover">
@@ -20,10 +9,8 @@
             </router-link>
           </el-col>
           <el-col :span="24" :xs="24" class="cables-div">
-            <h4>${{item.price}}</h4>
-            <!-- <el-button icon="el-icon-delete" circle style="padding:5px;" @click="deleteProduct(item)"></el-button> -->
             <router-link :to="{path: '/edit-product/edit-cables/'+item.id}">
-              {{item.name}}
+              {{item.item}}
             </router-link>
             <el-col>
               <el-button icon="el-icon-delete" circle style="padding:5px;" @click="deleteProduct(item)"></el-button>
@@ -62,7 +49,7 @@ export default {
       total: 0,
       img: 'http://www.gugualao.top/files/',
       productList: [],
-      type: '9'
+      type: '4'
     }
   },
   methods: {
@@ -80,8 +67,7 @@ export default {
         pageSize: that.pageSize,
         pageNum: this.pageNum
       }
-      console.log(params)
-      api.post('/product/query-power-products', params).then(data => {
+      api.post('/cables/query-list', params).then(data => {
         if (data.code === '0') {
           that.productList = data.list
           that.total = data.total
@@ -98,10 +84,9 @@ export default {
       }
       let params = {
         userId: that.userInfo.userId,
-        productId: item.id,
-        type: 'cables'
+        cablesId: item.id,
       }
-      api.post('/product/delete-product', params).then(data => {
+      api.postC('/cables/delete-cables', params).then(data => {
         if (data.code === '0') {
           alert('Remove Success')
           this.$router.go(0)

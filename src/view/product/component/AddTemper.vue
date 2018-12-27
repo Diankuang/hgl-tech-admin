@@ -45,15 +45,14 @@
           </el-col>
           <el-col class="add-temper-form">
               <el-form :model="temperForm"  ref="temperForm" label-width="100px" class="demo-temperForm">
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="name" prop="name">
-                  <el-input v-model="temperForm.name"></el-input>
+                  <el-form-item label="item" prop="item">
+                  <el-input v-model="temperForm.item"></el-input>
                   </el-form-item>
-                  <el-form-item label="price" prop="price" type="number" step="0.01">
-                      <el-input v-model="temperForm.price"></el-input>
+                  <el-form-item label="model" prop="model">
+                      <el-input v-model="temperForm.model"></el-input>
                   </el-form-item>
-                  <el-form-item label="adapter" prop="adapter">
-                      <el-input v-model="temperForm.adapter"></el-input>
+                  <el-form-item label="material" prop="material">
+                      <el-input v-model="temperForm.material"></el-input>
                   </el-form-item>
                   <el-form-item label="type" prop="type">
                       <el-select v-model="temperForm.type" placeholder="Select Type">
@@ -65,13 +64,18 @@
                       <el-option label="Others" value="6"></el-option>
                       </el-select>
                   </el-form-item>
-                  <el-form-item label="introductions" prop="introductions">
-                      <el-input type="textarea" :rows="2" v-model="temperForm.introductions"></el-input>
+                  <el-form-item label="dimension" prop="dimension">
+                      <el-input v-model="temperForm.dimension"></el-input>
                   </el-form-item>
-                    <!-- <el-form-item>
-                      <el-button type="primary" @click="submitForm('temperForm')">Submit</el-button>
-                      <el-button @click="resetForm('temperForm')">Reset</el-button>
-                  </el-form-item> -->
+                  <el-form-item label="thickness" prop="thickness">
+                      <el-input v-model="temperForm.thickness"></el-input>
+                  </el-form-item>
+                  <el-form-item label="hardness" prop="hardness">
+                      <el-input v-model="temperForm.hardness"></el-input>
+                  </el-form-item>
+                  <el-form-item label="features" prop="features">
+                      <el-input v-model="temperForm.features"></el-input>
+                  </el-form-item>
               </el-form>
           </el-col>
           <el-col>
@@ -90,15 +94,19 @@ export default {
   data () {
     return {
       temperForm: {
-        name: '',
-        adapter: '',
+        item: '',
+        model: '',
+        material: '',
+        dimension: '',
+        thickness: '',
+        hardness: '',
+        features: '',
+        picture: '',
         /**
-         * 手机膜类别，1 temper,2 Huawei,3 Samsung,4 oppo,5 vivo,6 others
-         */
+        * 手机膜类别，1 temper,2 Huawei,3 Samsung,4 oppo,5 vivo,6 others
+        */
         type: '',
-        price: '',
-        introductions: '',
-        picture: [],
+        temperPicture: [],
         detail: []
       },
       rules: {
@@ -169,10 +177,13 @@ export default {
     upload (file) {
       let that = this
       if (file.code === '0') {
+        if (that.orderNo === 0) {
+          that.temperForm.picture = file.fileName
+        }
         let orderNo = that.orderNo + 1
         that.orderNo = orderNo
         let picture = {orderNo: orderNo, picture: file.fileName}
-        that.temperForm.picture.push(picture)
+        that.temperForm.temperPicture.push(picture)
       }
     },
     uploadDetail (file) {

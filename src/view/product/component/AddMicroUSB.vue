@@ -45,15 +45,12 @@
           </el-col>
           <el-col class="add-micro-usb-form" :span="24" :xs="24">
               <el-form :model="cablesForm" :label-position="labelPosition" ref="cablesForm" label-width="100px" class="demo-cablesForm">
-                  <!-- <el-col :span="12" :xs="24"> -->
                   <el-form-item label="item" prop="item">
                     <el-input v-model="cablesForm.item"></el-input>
                   </el-form-item>
                   <el-form-item label="model" prop="model">
                       <el-input v-model="cablesForm.model"></el-input>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
                   <el-form-item label="type" prop="type">
                       <el-select v-model="cablesForm.type" placeholder="Select Type">
                         <el-option label="Micro Usb" value="1"></el-option>
@@ -62,86 +59,21 @@
                         <el-option label="Others" value="4"></el-option>
                       </el-select>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
                   <el-form-item label="length" prop="length">
                       <el-input v-model="cablesForm.length"></el-input>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
                   <el-form-item label="material" prop="material">
                       <el-input v-model="cablesForm.material"></el-input>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
                   <el-form-item label="core" prop="core">
                       <el-input v-model="cablesForm.core"></el-input>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
                   <el-form-item label="current" prop="current">
                       <el-input v-model="cablesForm.current"></el-input>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
                   <el-form-item label="features" prop="features">
                       <el-input v-model="cablesForm.features"></el-input>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <!-- <el-form-item label="power" prop="power">
-                      <el-input v-model="cablesForm.power"></el-input>
-                  </el-form-item> -->
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <!-- <el-form-item label="circuitProtections" prop="circuitProtections">
-                      <el-input v-model="cablesForm.circuitProtections"></el-input>
-                  </el-form-item> -->
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <!-- <el-form-item label="dimension" prop="dimension">
-                      <el-input v-model="cablesForm.dimension"></el-input>
-                  </el-form-item> -->
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <!-- <el-form-item label="service" prop="service">
-                      <el-input v-model="cablesForm.service"></el-input>
-                  </el-form-item> -->
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <!-- <el-form-item label="port" prop="port">
-                      <el-input v-model="cablesForm.port"></el-input>
-                  </el-form-item> -->
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <!-- <el-form-item label="pin" prop="pin">
-                      <el-input v-model="cablesForm.pin"></el-input>
-                  </el-form-item> -->
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <!-- <el-form-item label="plug" prop="plug">
-                      <el-input v-model="cablesForm.plug"></el-input>
-                  </el-form-item> -->
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <!-- <el-form-item label="introductions" prop="introductions">
-                      <el-input v-model="cablesForm.introductions"></el-input>
-                  </el-form-item> -->
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <!-- <el-form-item label="modelNo" prop="modelNo">
-                      <el-input v-model="cablesForm.modelNo"></el-input>
-                  </el-form-item> -->
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="24" :xs="24"> -->
-                  <!-- <el-form-item label="certificate" prop="certificate">
-                      <el-input v-model="cablesForm.certificate"></el-input>
-                  </el-form-item> -->
-                  <!-- </el-col> -->
-                  <!-- <el-form-item>
-                      <el-button type="primary" @click="submitForm('cablesForm')">Submit</el-button>
-                      <el-button @click="resetForm('cablesForm')">Reset</el-button>
-                  </el-form-item> -->
               </el-form>
           </el-col>
           <el-col>
@@ -241,7 +173,7 @@ export default {
     upload (file) {
       let that = this
       if (file.code === '0') {
-        if (that.orderNo === 0){
+        if (that.orderNo === 0) {
           that.cablesForm.picture = file.fileName
         }
         let orderNo = that.orderNo + 1

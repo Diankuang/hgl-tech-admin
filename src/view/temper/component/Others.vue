@@ -6,10 +6,8 @@
            <router-link :to="{path: '/edit-product/edit-temper/'+item.id}">
             <img :src="img+item.picture" class="image">
           </router-link>
-          <h4>${{item.price}}</h4>
-          <!-- <el-button icon="el-icon-star-on" circle style="padding:5px;" @click="addWishList(item)"></el-button> -->
           <router-link :to="{path: '/edit-product/edit-temper/'+item.id}" class="temper-router-link">
-            <p class="Others-row-col-p">{{item.name}}</p>
+            <p class="Others-row-col-p">{{item.item}}</p>
           </router-link>
           <el-col>
             <el-button icon="el-icon-delete" circle style="padding:5px;" @click="deleteProduct(item)"></el-button>
@@ -65,7 +63,7 @@ export default {
         pageSize: that.pageSize,
         pageNum: that.pageNum
       }
-      api.post('/temper/query-temper', params).then(data => {
+      api.post('/temper/query-list', params).then(data => {
         if (data.code === '0') {
           that.temperList = data.list
           that.total = data.total
@@ -80,11 +78,11 @@ export default {
       }
       let params = {
         userId: that.userInfo.userId,
-        productId: item.id,
-        type: 'temper'
+        temperId: item.id,
       }
-      api.post('/product/delete-product', params).then(data => {
+      api.postC('/temper/delete-temper', params).then(data => {
         if (data.code === '0') {
+          alert('Remove Success')
           this.$router.go(0)
         } else {
           alert(data.msg)

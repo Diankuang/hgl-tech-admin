@@ -34,109 +34,36 @@
             </el-col>
           </el-col>
           <el-col class="edit-cables-form" :span="24" :xs="24">
-              <el-form :model="mictousbForm" :label-position="labelPosition" ref="mictousbForm" label-width="100px" class="demo-mictousbForm">
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="name" prop="name">
-                    <el-input v-model="mictousbForm.name"></el-input>
+              <el-form :model="cablesForm" :label-position="labelPosition" ref="cablesForm" label-width="100px" class="demo-cablesForm">
+                  <el-form-item label="item" prop="item">
+                    <el-input v-model="cablesForm.item"></el-input>
                   </el-form-item>
-                  <el-form-item label="price" prop="price">
-                      <el-input v-model="mictousbForm.price"></el-input>
+                  <el-form-item label="model" prop="model">
+                      <el-input v-model="cablesForm.model"></el-input>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
                   <el-form-item label="type" prop="type">
-                      <el-select v-model="mictousbForm.type" placeholder="Select Type">
-                        <el-option label="Wireles schargers" value="1"></el-option>
-                        <el-option label="Car Chargers" value="2"></el-option>
-                        <el-option label="Single USB Chargers" value="3"></el-option>
-                        <el-option label="Wall Chargers" value="4"></el-option>
-                        <el-option label="Multi-function" value="5"></el-option>
-                        <el-option label="Power Socket" value="6"></el-option>
-                        <el-option label="Type-C" value="7"></el-option>
-                        <el-option label="Lighting" value="8"></el-option>
-                        <el-option label="Others" value="9"></el-option>
+                      <el-select v-model="cablesForm.type" placeholder="Select Type">
+                        <el-option label="Micro Usb" value="1"></el-option>
+                        <el-option label="Type-C" value="2"></el-option>
+                        <el-option label="Lighting" value="3"></el-option>
+                        <el-option label="Others" value="4"></el-option>
                       </el-select>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
+                  <el-form-item label="length" prop="length">
+                      <el-input v-model="cablesForm.length"></el-input>
+                  </el-form-item>
                   <el-form-item label="material" prop="material">
-                      <el-input v-model="mictousbForm.material"></el-input>
+                      <el-input v-model="cablesForm.material"></el-input>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="size" prop="size">
-                      <el-input v-model="mictousbForm.size"></el-input>
+                  <el-form-item label="core" prop="core">
+                      <el-input v-model="cablesForm.core"></el-input>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="input" prop="input">
-                      <el-input v-model="mictousbForm.input"></el-input>
+                  <el-form-item label="current" prop="current">
+                      <el-input v-model="cablesForm.current"></el-input>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="output" prop="output">
-                      <el-input v-model="mictousbForm.output"></el-input>
+                  <el-form-item label="features" prop="features">
+                      <el-input v-model="cablesForm.features"></el-input>
                   </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="color" prop="color">
-                      <el-input v-model="mictousbForm.color"></el-input>
-                  </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="power" prop="power">
-                      <el-input v-model="mictousbForm.power"></el-input>
-                  </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="circuitProtections" prop="circuitProtections">
-                      <el-input v-model="mictousbForm.circuitProtections"></el-input>
-                  </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="dimension" prop="dimension">
-                      <el-input v-model="mictousbForm.dimension"></el-input>
-                  </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="service" prop="service">
-                      <el-input v-model="mictousbForm.service"></el-input>
-                  </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="port" prop="port">
-                      <el-input v-model="mictousbForm.port"></el-input>
-                  </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="pin" prop="pin">
-                      <el-input v-model="mictousbForm.pin"></el-input>
-                  </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="plug" prop="plug">
-                      <el-input v-model="mictousbForm.plug"></el-input>
-                  </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="introductions" prop="introductions">
-                      <el-input v-model="mictousbForm.introductions"></el-input>
-                  </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="12" :xs="24"> -->
-                  <el-form-item label="modelNo" prop="modelNo">
-                      <el-input v-model="mictousbForm.modelNo"></el-input>
-                  </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-col :span="24" :xs="24"> -->
-                  <el-form-item label="certificate" prop="certificate">
-                      <el-input v-model="mictousbForm.certificate"></el-input>
-                  </el-form-item>
-                  <!-- </el-col> -->
-                  <!-- <el-form-item>
-                      <el-button type="primary" @click="submitForm('mictousbForm')">Submit</el-button>
-                      <el-button @click="resetForm('mictousbForm')">Reset</el-button>
-                  </el-form-item> -->
               </el-form>
           </el-col>
           <el-col>
@@ -154,31 +81,21 @@ export default {
   name: 'EditCables',
   data () {
     return {
-      mictousbForm: {
-        name: '',
-        /**
-        *1Wirelesschargers,2CarChargers,3SingleUSBChargers,4WallChargers,5Multi-function,6PowerSocket,
-        */
-        price: '',
-        type: '',
+      cablesForm: {
+        id: '',
+        item: '',
+        model: '',
+        length: '',
         material: '',
-        size: '',
-        input: '',
-        output: '',
-        color: '',
-        power: '',
-        circuitProtections: '',
-        dimension: '',
-        service: '',
-        port: '',
-        pin: '',
-        plug: '',
-        introductions: '',
-        modelNo: '',
-        certificate: '',
-        picture: [],
-        detail: []
+        core: '',
+        current: '',
+        features: '',
+        picture: '',
+        type: ''
       },
+      cables: {},
+      cablesPictures: [],
+      cablesDetails: [],
       productPicture: [],
       labelPosition: 'right',
       rules: {
@@ -266,40 +183,14 @@ export default {
     getProductDetail () {
       let that = this
       let param = {
-        productId: this.$route.params.productId
+        cablesId: this.$route.params.productId
       }
-      api.postC('/product/query-power-pro-detail', param).then(data => {
+      api.postC('/cables/query-detail', param).then(data => {
         if (data.code === '0') {
-          that.mictousbForm = data.product
-          console.log(that.mictousbForm)
-          // let type = that.mictousbForm.type
-          // if (type === '1') {
-          //   that.product.type = 'Wireles schargers'
-          // }
-          // if (type === '2') {
-          //   that.product.type = 'Car Chargers'
-          // }
-          // if (type === '3') {
-          //   that.product.type = 'Single USB Chargers'
-          // }
-          // if (type === '4') {
-          //   that.product.type = 'Wall Chargers'
-          // }
-          // if (type === '5') {
-          //   that.product.type = 'Multi-function'
-          // }
-          // if (type === '6') {
-          //   that.product.type = 'Power Socket'
-          // }
-          that.productPicture = data.productPicture
-          console.log('productPicture')
-          console.log(that.productPicture)
-          api.postC('/product/get-product-detail', param).then(detail => {
-            if (detail.code === '0') {
-              that.productDetail = detail.list
-              console.log(that.productDetail)
-            }
-          })
+          that.cablesForm = data.cables
+          console.log(that.cablesForm)
+          that.cablesPictures = data.cablesPictures
+          that.cablesDetails = data.cablesDetails
         } else {
           alert(data.msg)
         }
